@@ -8,6 +8,17 @@ use Illuminate\Support\Arr;
 class ProjectService
 {
 
+    public function filterProjects(array $filter = [])
+    {
+        $query = Project::query();
+
+        if (Arr::has($filter, 'search')) {
+            $query->where('name', 'LIKE', '%' . $filter['search'] . '%');
+        }
+
+        return $query->orderBy('name')->get();
+    }
+
     public function createProject($input)
     {
         $data = Arr::only($input, [
