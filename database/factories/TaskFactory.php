@@ -22,9 +22,9 @@ class TaskFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->sentence(10),
-            'description' => $this->faker->paragraph(10),
-            'due_date' => $this->faker->dateTimeBetween('now', '+1 week'),
+            'name' => $this->faker->text(100),
+            'description' => $this->faker->text(1000),
+            'due_date' => $this->faker->dateTimeBetween('now', '+1 week')->format('Y-m-d'),
         ];
     }
 }
