@@ -35,6 +35,8 @@ class TaskService
 
         $project = Task::create($data);
 
+        $project->refresh();
+
         return $project;
     }
 
